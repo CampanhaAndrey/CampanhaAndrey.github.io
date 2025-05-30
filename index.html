@@ -745,6 +745,30 @@
             document.body.style.overflow = 'auto';
         }
         
+        // Adiciona o event listener para o botão de fechar
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            generateQRCode();
+            
+            // Vincula o evento de fechar ao botão "X"
+            const closeButton = document.querySelector('.close');
+            if (closeButton) {
+                closeButton.addEventListener('click', closeModal);
+            }
+            
+            // Fecha o modal ao clicar fora da imagem
+            const modal = document.getElementById('imageModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+            
+
+        });
+        
         // Social sharing functions
         function shareOnFacebook() {
             const url = encodeURIComponent(window.location.href);
